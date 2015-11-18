@@ -12,6 +12,5 @@ namespace ITBookStore.Models
         public int Quantity { get; set; }
         public string Item { get; set; }
         public decimal Price { get; set; }
-
     }
 }

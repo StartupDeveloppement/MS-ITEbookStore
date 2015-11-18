@@ -17,7 +17,7 @@ namespace ITBookStore.Controllers
             // Création d'un Liste de commandes
             List<OrderModel> orders = GetOrderDemoModels();
 
-            // Nous allons mettre les Customer et les Orders dans la Session
+            // Nous allons mettre les Customers et les Orders dans la Session
             // ...sachant que normallement il doit avoir un DataContext qui est rattaché à la base de données
             Session["Orders"] = orders;
             Session["Customers"] = ViewBag.Customers;
@@ -136,7 +136,7 @@ namespace ITBookStore.Controllers
         [HttpPost]
         public ActionResult Edit(OrderModel order)
         {
-            // ICic nous devons avoir les données modifiées
+            // C'est ici que nous devons avoir les données modifiées
             return RedirectToAction("Index");
         }
 
