@@ -1,0 +1,26 @@
+﻿@model ITBookStore.Models.ITProduct
+@{
+    ViewBag.Title = "Détail eBook";
+}
+
+<br /><br /><br />
+<h2>La Boutique <b>EShop</b></h2>
+<br /><hr />
+
+<div style="display:inline-block">
+    <div style="width:300px; float:left;">
+        <img src="@Model.Image" width="250" height="330" alt="@Model.ProductName" title="@Model.ProductName">
+    </div>
+    <div style="width:70%; float:left;">
+        <h1>
+            @Html.DisplayFor(modelItem => Model.ProductName)
+        </h1>
+        <p>
+            @Html.DisplayFor(modelItem => Model.Details)
+        </p>
+        <p>
+            $@Html.DisplayFor(modelItem => Model.Price)
+        </p>
+    </div>
+</div>
+

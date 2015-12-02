@@ -44,7 +44,7 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Image" Type="nvarchar(max)" />
-          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
           <Property Name="Details" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_ITOrderItems_ITOrders_OrderID">
@@ -150,7 +150,7 @@
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ITOrderItems" Relationship="Self.FK_ITOrderItems_ITProducts_ProductID" FromRole="ITProducts" ToRole="ITOrderItems" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_ITOrders_ITCustomer_CustomerID">

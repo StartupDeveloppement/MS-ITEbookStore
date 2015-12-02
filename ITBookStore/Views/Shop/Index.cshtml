@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ITBookStore.Models.ITProductsModel>
+
+@{
+    ViewBag.Title = "La Boutique";
+}
+
+<br /><br /><br />
+<h2>La Boutique <b>EShop</b></h2>
+<br /><hr />
+
+@foreach (var item in Model.ITProductList)
+{
+    <div style="display:inline-block">
+        <div style="width:30%; float:left;">
+            <img src="@item.Image" width="250" height="330" alt="@item.ProductName" title="@item.ProductName">
+        </div>
+        <div style="width:70%; float:left;">
+            <h3>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </h3>
+            <p>
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            <p>
+                $@Html.DisplayFor(modelItem => item.Price)
+            </p>
+            <p>
+                @Html.ActionLink("More Info", "Index", "ItemDetail", new { id = item.ProductID }, new { id = "ProductID" })
+            </p>
+        </div>
+    </div>
+}
+
+<div class="pager">
+    @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
+</div>
+
+
+
+
