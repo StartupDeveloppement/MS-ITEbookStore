@@ -1,75 +1,29 @@
-﻿@model IEnumerable<ITBookStore.Models.Customer>
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ITBook Store";
 }
 
-<h2>Index</h2>
+<!--<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>-->
+<br /><br /><br /><br />
+    <h2>Lire, n'importe où grace à votre magasin <b>ITEBookStore.com</b> !</h2>
+<br />
+    <p>Avec ITBook Store, dévorez vos livres n'importe où, que ce soit sur smartphone, tablette ou liseuse.</p>
+    <p>Présenté en qualité HD, l'infinie variété des compétences des formations que nous fournissons, vous fournit une manière claire et concise pour apprendre les applications informatiques et les langages de programmation à votre propre rythme. Livré sur le bureau de votre PC, iPad ou iPhone, la formation de haute qualité est plus que jamais à un clic de souris ! </</p>
+    <p>Pour améliorer votre assimilation et pour vous fournir une expérience d'apprentissage intuitive, nos livres fournissent un mode de formatio facile, avec des leçons à suivre des leçons étape-par-étape, vous permettant d'explorer les sujets les plus complexes afin qu'ils soient rapidement maîtrisé peu importe les compétences et le niveau de base de l'utilisateur.</p>
+    <p>L'accent est mis tous les livres délivrant une formation de qualité à prix abordable, dans un format de fichier qui permet aux utilisateurs d'apprendre en temps réel des compétences pratiques qui sont lui seront importantes dans les environnements commerciaux actuels. </</p>
+    <ul class="list">
+        <li>Des livres rédigés par des expert IT</li>
+        <li>Formez-vous efficacement et vite</li>
+        <li>Convient pour tous les niveaux d'utilisateurs</li>
+        <li>Idéal pour les utilisateurs qui préfèrent apprendre d'eux même</li>
+    </ul>
+<!-- </body>
+</html>-->
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
-        </td>
-    </tr>
-}
-
-</table>
