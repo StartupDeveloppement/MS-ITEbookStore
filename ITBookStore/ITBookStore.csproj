@@ -48,6 +48,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -93,7 +95,24 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\ITStoreContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITStoreContext.edmx</DependentUpon>
+      <LastGenOutput>ITStoreContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ITStoreContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITStoreContext.edmx</DependentUpon>
+      <LastGenOutput>ITStoreContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ITStoreContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ITStoreContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ITStoreContext.edmx.diagram">
+      <DependentUpon>ITStoreContext.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -114,6 +133,33 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ITBookStoreContext.cs" />
+    <Compile Include="Models\ITCustomer.cs">
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITOrder.cs">
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITOrderItem.cs">
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITProduct.cs">
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITStoreContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITStoreContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITStoreContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITStoreContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITStoreContext.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -142,6 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
