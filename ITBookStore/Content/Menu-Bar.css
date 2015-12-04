@@ -1,0 +1,11 @@
+﻿a.a-image {
+    background:url('img/logo-sm.JPG') no-repeat;
+    display:block;
+    
+    height: 47px;
+    width: 67px;
+}
+
+ul.nav.navbar-nav {
+    font-size:16px;
+}

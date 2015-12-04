@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ITBookStore.Models;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+
 
 namespace ITBookStore.Models
 {

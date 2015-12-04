@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ITBookStore.Models.ITProductsModel>
+﻿@model ITBookStore.Models.ITProductsModel
+
+
 
 @{
     ViewBag.Title = "La Boutique";
@@ -12,7 +14,7 @@
 {
     <div style="display:inline-block">
         <div style="width:30%; float:left;">
-            <img src="@item.Image" width="250" height="330" alt="@item.ProductName" title="@item.ProductName">
+            <img src="@item.Image" width="230" height="330" alt="@item.ProductName" title="@item.ProductName">
         </div>
         <div style="width:70%; float:left;">
             <h3>
@@ -25,16 +27,18 @@
                 $@Html.DisplayFor(modelItem => item.Price)
             </p>
             <p>
-                @Html.ActionLink("More Info", "Index", "ItemDetail", new { id = item.ProductID }, new { id = "ProductID" })
+                @Html.ActionLink("Plus d'infos", "Index", "ItemDetail", new { id = item.ProductID }, new { id = "ProductID" })
             </p>
         </div>
     </div>
+    <hr />
 }
 
-<div class="pager">
-    @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
-</div>
+@using ITBookStore.HtmlHelpers 
 
+    <div class="pager">
+        @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
+    </div>
 
 
 
