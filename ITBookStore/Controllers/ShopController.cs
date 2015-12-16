@@ -25,7 +25,7 @@ namespace ITBookStore.Controllers
 
             ITProductsModel model = new ITProductsModel
             {
-                // récupération des 3 Products à afficher :
+                // récupération des 3 Produits à afficher :
                 ITProductList = data,
 
                 Pagination = new PaginationModel
