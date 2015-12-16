@@ -144,6 +144,9 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ITBookStoreContext.cs" />
+    <Compile Include="Models\ITCategory.cs">
+      <DependentUpon>ITStoreContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ITCustomer.cs">
       <DependentUpon>ITStoreContext.tt</DependentUpon>
     </Compile>

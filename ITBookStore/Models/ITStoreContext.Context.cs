@@ -29,5 +29,6 @@ namespace ITBookStore.Models
         public virtual DbSet<ITOrderItem> ITOrderItems { get; set; }
         public virtual DbSet<ITOrder> ITOrders { get; set; }
         public virtual DbSet<ITProduct> ITProducts { get; set; }
+        public virtual DbSet<ITCategory> ITCategories { get; set; }
     }
 }

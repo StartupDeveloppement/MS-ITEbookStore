@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ITStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ITCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="ITCustomers">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -46,6 +53,7 @@
           <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar" MaxLength="1000" />
           <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" />
         </EntityType>
         <Association Name="FK_ITOrderItems_ITOrders_OrderID">
           <End Role="ITOrders" Type="Self.ITOrders" Multiplicity="1" />
@@ -83,7 +91,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ITProducts_CategoryID_ITCategories_CategoryID">
+          <End Role="ITCategories" Type="Self.ITCategories" Multiplicity="0..1" />
+          <End Role="ITProducts" Type="Self.ITProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITCategories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ITProducts">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ITStoreModelStoreContainer">
+          <EntitySet Name="ITCategories" EntityType="Self.ITCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITCustomers" EntityType="Self.ITCustomers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITOrderItems" EntityType="Self.ITOrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITOrders" EntityType="Self.ITOrders" Schema="dbo" store:Type="Tables" />
@@ -99,6 +120,10 @@
           <AssociationSet Name="FK_ITOrders_ITCustomer_CustomerID" Association="Self.FK_ITOrders_ITCustomer_CustomerID">
             <End Role="ITCustomers" EntitySet="ITCustomers" />
             <End Role="ITOrders" EntitySet="ITOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITProducts_CategoryID_ITCategories_CategoryID" Association="Self.FK_ITProducts_CategoryID_ITCategories_CategoryID">
+            <End Role="ITCategories" EntitySet="ITCategories" />
+            <End Role="ITProducts" EntitySet="ITProducts" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -152,6 +177,8 @@
           <NavigationProperty Name="ITOrderItems" Relationship="Self.FK_ITOrderItems_ITProducts_ProductID" FromRole="ITProducts" ToRole="ITOrderItems" />
           <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="ITCategory" Relationship="ITStoreModel.FK_ITProducts_CategoryID_ITCategories_CategoryID" FromRole="ITProduct" ToRole="ITCategory" />
         </EntityType>
         <Association Name="FK_ITOrders_ITCustomer_CustomerID">
           <End Role="ITCustomers" Type="Self.ITCustomer" Multiplicity="0..1" />
@@ -206,7 +233,32 @@
             <End Role="ITProducts" EntitySet="ITProducts" />
             <End Role="ITOrderItems" EntitySet="ITOrderItems" />
           </AssociationSet>
+          <EntitySet Name="ITCategories" EntityType="ITStoreModel.ITCategory" />
+          <AssociationSet Name="FK_ITProducts_CategoryID_ITCategories_CategoryID" Association="ITStoreModel.FK_ITProducts_CategoryID_ITCategories_CategoryID">
+            <End Role="ITCategory" EntitySet="ITCategories" />
+            <End Role="ITProduct" EntitySet="ITProducts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ITCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ITProducts" Relationship="ITStoreModel.FK_ITProducts_CategoryID_ITCategories_CategoryID" FromRole="ITCategory" ToRole="ITProduct" />
+        </EntityType>
+        <Association Name="FK_ITProducts_CategoryID_ITCategories_CategoryID">
+          <End Type="ITStoreModel.ITCategory" Role="ITCategory" Multiplicity="0..1" />
+          <End Type="ITStoreModel.ITProduct" Role="ITProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ITProduct">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -250,12 +302,21 @@
           <EntitySetMapping Name="ITProducts">
             <EntityTypeMapping TypeName="ITStoreModel.ITProduct">
               <MappingFragment StoreEntitySet="ITProducts">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITCategories">
+            <EntityTypeMapping TypeName="ITStoreModel.ITCategory">
+              <MappingFragment StoreEntitySet="ITCategories">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

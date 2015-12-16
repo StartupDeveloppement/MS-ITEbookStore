@@ -12,6 +12,8 @@
         <AssociationConnector Association="ITStoreModel.FK_ITOrders_ITCustomer_CustomerID" ManuallyRouted="false" />
         <AssociationConnector Association="ITStoreModel.FK_ITOrderItems_ITOrders_OrderID" ManuallyRouted="false" />
         <AssociationConnector Association="ITStoreModel.FK_ITOrderItems_ITProducts_ProductID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ITStoreModel.ITCategory" Width="1.5" PointX="8.125" PointY="1.25" />
+        <AssociationConnector Association="ITStoreModel.FK_ITProducts_CategoryID_ITCategories_CategoryID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,24 +12,18 @@ namespace ITBookStore.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ITProduct
+    public partial class ITCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ITProduct()
+        public ITCategory()
         {
-            this.ITOrderItems = new HashSet<ITOrderItem>();
+            this.ITProducts = new HashSet<ITProduct>();
         }
     
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }
-        public decimal Price { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
-        public string Details { get; set; }
-        public Nullable<int> CategoryID { get; set; }
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ITOrderItem> ITOrderItems { get; set; }
-        public virtual ITCategory ITCategory { get; set; }
+        public virtual ICollection<ITProduct> ITProducts { get; set; }
     }
 }
