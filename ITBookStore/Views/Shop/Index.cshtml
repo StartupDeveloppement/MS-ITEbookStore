@@ -10,7 +10,25 @@
 <h2>La Boutique <b>EShop</b></h2>
 <br /><hr />
 
-@foreach (var item in Model.ITProductList)
+@using (Html.BeginForm("Index", "Shop", FormMethod.Post, new { id = "ShopForm" }))
+{
+    @Html.HiddenFor(x => x.Pagination.CurrentPage);
+    @Html.HiddenFor(x => x.Pagination.ItemsPerPage);
+    @Html.HiddenFor(x => x.Pagination.TotalItems);
+
+    <div style="width: 300px;">
+        Category:
+        @Html.DropDownListFor(x => x.CategoryID, Model.Categories(), "--Select a Category--",
+         new
+         {
+             onchange = "document.getElementById('ShopForm').submit();",
+             @class = "form-control"
+         })
+    </div>
+
+    <br /><br /><br /><br />
+
+foreach (var item in Model.ITProductList)
 {
     <div class="row panel">
         <div class="col-xs-4">
@@ -35,11 +53,14 @@
     <hr />
 }
 
-@using ITBookStore.HtmlHelpers
+
+
+@* using ITBookStore.HtmlHelpers  *@
 
 <div class="pager btn-group pull-right">
-    @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
+    @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x, categoryID = Model.CategoryID }))
 </div>
 
-
+   
+}
 
