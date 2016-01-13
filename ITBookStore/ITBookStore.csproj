@@ -224,6 +224,8 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\ItemDetail\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout-ancien.cshtml" />
+    <Content Include="Views\Shop\Index-ancien.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,6 @@
-﻿body
+﻿/*
+
+body
 {
     background-color: #dcdcfa;
     margin: 8px;
@@ -80,4 +82,17 @@ a:visited
     background-color: #034af3;
     text-decoration: none;
 }
+*/
+/*
+.label-primary {
+    background-color: #58CA42;
+} */
 
+
+.label {
+    font-size: 100%; 
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}

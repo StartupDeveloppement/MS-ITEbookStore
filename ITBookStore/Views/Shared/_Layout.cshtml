@@ -7,41 +7,32 @@
     <link href="~/Content/Menu-Bar.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <meta name="eBook" content="Vente de ebooks" />
 </head>
 <body>
-    <div id="main">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            
-            <div class="container">
-                
-                <div class="navbar-header">
-                    
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                    @Html.ActionLink(".", "Index", "Home", new { area = "" }, new { @class = "navbar-brand a-image" } )
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Shop", "Index", "Shop")</li>
-                        <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                        <li>@Html.ActionLink("Register", "Index", "Register")</li>
+    <div class="navbar navbar-inverse" role="navigation">
+        <h1 id="header" class="navbar-text h1">ITBookStore</h1>
+    </div>
 
-                    </ul>
-                </div>
-            </div>
+    <div id="main" class="row panel">
+        <div class="col-xs-2 well">
+            <!-- <h2>Menu</h2>-->
+            <ul>
+                <li class="btn btn-block btn-default btn-lg">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="btn btn-block btn-default btn-lg">@Html.ActionLink("Boutique", "Index", "Shop")</li>
+                <li class="btn btn-block btn-default btn-lg">@Html.ActionLink("Panier d'achat", "Index", "Cart")</li>
+                <li class="btn btn-block btn-default btn-lg">@Html.ActionLink("Connexion", "Index", "Login")</li>
+                <li class="btn btn-block btn-default btn-lg">@Html.ActionLink("Enregistrez-vous", "Index", "Register")</li>
+            </ul>
         </div>
 
-        <div class="container body-content">
+        <div class="col-xs-9">
             @RenderBody()
-            <hr />
+        </div>
+    </div>
+
             <footer>
                 <p>&copy; @DateTime.Now.Year - ITBookStore Application</p>
             </footer>

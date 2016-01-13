@@ -12,19 +12,18 @@
 
 @foreach (var item in Model.ITProductList)
 {
-    <div class="row panel">
-        <div class="col-xs-4">
-
+    <div style="display:inline-block">
+        <div style="width:30%; float:left;">
             <img src="@item.Image" width="230" height="330" alt="@item.ProductName" title="@item.ProductName">
         </div>
-        <div class="well col-xs-8">
+        <div style="width:70%; float:left;">
             <h3>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </h3>
             <p>
                 @Html.DisplayFor(modelItem => item.Description)
             </p>
-            <p class="pull-right label label-primary">
+            <p>
                 $@Html.DisplayFor(modelItem => item.Price)
             </p>
             <p>
@@ -37,7 +36,7 @@
 
 @using ITBookStore.HtmlHelpers
 
-<div class="pager btn-group pull-right">
+<div class="pager">
     @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
 </div>
 
