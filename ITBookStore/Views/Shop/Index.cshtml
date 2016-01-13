@@ -34,11 +34,11 @@
     <hr />
 }
 
-@using ITBookStore.HtmlHelpers 
+@using ITBookStore.HtmlHelpers
 
-    <div class="pager">
-        @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
-    </div>
+<div class="pager">
+    @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
+</div>
 
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ITBookStore.Models;
+using ITBookStore.Properties;
 
 namespace ITBookStore.Controllers
 {
@@ -13,7 +14,9 @@ namespace ITBookStore.Controllers
         private ITStoreEntities db = new ITStoreEntities();
 
         // nbre de Products par page :
-        private const int PAGE_SIZE = 3;
+        // private const int PAGE_SIZE = 3;
+        private int PAGE_SIZE = Settings.Default.NbreItemperPage;
+
 
         public ActionResult Index(int page = 1)
         {
