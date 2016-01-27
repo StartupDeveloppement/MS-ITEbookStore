@@ -14,6 +14,7 @@ namespace ITBookStore.Models
 
         public int CategoryID { get; set; }
 
+        public string SearchString { get; set; }
         public SelectList Categories()
         {
             ITStoreEntities db = new ITStoreEntities();

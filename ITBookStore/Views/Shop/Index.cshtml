@@ -18,16 +18,26 @@
 
     <div style="width: 300px;">
         Category:
-        @Html.DropDownListFor(x => x.CategoryID, Model.Categories(), "--Select a Category--",
-         new
-         {
-             onchange = "document.getElementById('ShopForm').submit();",
-             @class = "form-control"
-         })
+        <span>
+             @Html.DropDownListFor(x => x.CategoryID, Model.Categories(), "--Select a Category--",
+             new
+             {
+                 onchange = "document.getElementById('ShopForm').submit();",
+                 @class = "form-control"
+             })
+        </span>
+        <br /><br />
+        <span class="pull-right">
+            Search For :
+            @Html.TextBoxFor(x => x.SearchString)
+            <input type="submit" value="Search" />
+        </span>
+
     </div>
 
-    <br /><br /><br /><br />
-
+    <br /><br /><br />
+    <hr />
+    <br />
 foreach (var item in Model.ITProductList)
 {
     <div class="row panel">
