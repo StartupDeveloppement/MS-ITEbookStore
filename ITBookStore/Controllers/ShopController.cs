@@ -17,10 +17,10 @@ namespace ITBookStore.Controllers
         private int PAGE_SIZE = Settings.Default.NbreItemperPage;
 
 
-        public ActionResult Index(int page = 1, int categoryID = 0)
+        public ActionResult Index(int page = 1, int categoryID = 0, string searchString = "")
         {
             // retourne dans la Vue un objet de type "ProductsModel"
-            return View(GetModel(page, categoryID));
+            return View(GetModel(page, categoryID, searchString));
         }
 
         [HttpPost]
@@ -30,16 +30,20 @@ namespace ITBookStore.Controllers
             int categoryID = productsModel.CategoryID;
 
             // retourne dans la Vue un objet de type "ProductsModel"
-            return View(GetModel(page, categoryID));
+            return View(GetModel(page, categoryID, productsModel.SearchString));
         }
 
-        private ITProductsModel GetModel(int page, int categoryID)
+        private ITProductsModel GetModel(int page, int categoryID, string searchString)
         {
             /* Récupère la Liste des 4 Produits
             * à afficher sur la page courante
              * et appartenant à la Catégorie 
              * demandée dans la requête Url : */
-            var data = db.ITProducts.Select(p => p).Where(p => categoryID == 0 || p.CategoryID == categoryID)
+            var data = db.ITProducts.Select(p => p)
+                    .Where(p => categoryID == 0 || p.CategoryID == categoryID)
+                    .Where(p => string.IsNullOrEmpty(searchString) || p.ProductName.Contains(searchString)  
+                        || p.Description.Contains(searchString)
+                        )
                         .OrderBy(p => p.ProductName)
                         .Skip((page - 1) * PAGE_SIZE).Take(PAGE_SIZE);
 
@@ -62,7 +66,9 @@ namespace ITBookStore.Controllers
                      *          dont la CategoryID est identique à la CategoryID de la requête Url : */
                     TotalItems = categoryID == 0 ?
                         db.ITProducts.Count() :
-                        db.ITProducts.Select(p => p).Where(p => p.CategoryID == categoryID).Count()
+                        db.ITProducts.Select(p => p)
+                            .Where(p => p.CategoryID == categoryID)
+                            .Where(p => p.Description.Contains(searchString)).Count()
                 },
                 CategoryID = categoryID
             };
