@@ -1,6 +1,6 @@
 ﻿@model ITBookStore.Models.ITProduct
 @{
-    ViewBag.Title = "Détail eBook";
+    ViewBag.Title = "Détail d'un eBook";
 }
 
 <br /><br /><br />
@@ -18,9 +18,25 @@
         <p>
             @Html.DisplayFor(modelItem => Model.Details)
         </p>
-        <p>
+        <p class="label label-primary" style="font-size:12pt">
             $@Html.DisplayFor(modelItem => Model.Price)
         </p>
+        <br /><br /><br />
+
+        @using (Html.BeginForm("AddToCart", "ShoppingCart"))
+        {
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.ProductID)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="Add to cart" />
+            </div>
+        }
+        <br /><br /><br />
+
+        <p>
+            @Html.ActionLink("Back to the Shop", "Index", "Shop", new { page = 1 }, new { categoryID = 0 })
+        </p>
+
     </div>
 </div>
 

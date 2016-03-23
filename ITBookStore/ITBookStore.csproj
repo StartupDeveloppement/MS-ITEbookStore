@@ -151,17 +151,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemDetailController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\OldHomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PaginationHelper.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\ITBookStoreContext.cs" />
     <Compile Include="Models\ITCategory.cs">
       <DependentUpon>ITStoreContext.tt</DependentUpon>
     </Compile>
@@ -193,11 +191,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ITStoreContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\PaginationModel.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ShoppingCartItemModel.cs" />
+    <Compile Include="Models\ShoppingCartModel.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -226,6 +224,7 @@
     <Content Include="Views\ItemDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Layout-ancien.cshtml" />
     <Content Include="Views\Shop\Index-ancien.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
